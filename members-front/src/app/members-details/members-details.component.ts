@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, ParamMap } from '@angular/router';
 import { ApiService } from '../api.service';
 
 @Component({
@@ -11,18 +11,20 @@ export class MembersDetailsComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private api: ApiService) { }
   selectedMember = { id: '', name: '', email: '', phone: '', created: '' };
+  selectedId: any;
 
   ngOnInit() {
-    this.loadMember();
+    this.route.paramMap.subscribe((param: ParamMap) => {
+      let id = parseInt(param.get('id')!);
+      this.selectedId = id;
+      this.loadMember(id);
+    });
   }
 
-  loadMember() {
-    const id = this.route.snapshot.paramMap.get('id');
-    console.log(id);
-
+  loadMember(id: any) {
     this.api.getMember(id).subscribe(
       data => {
-        console.log(data);
+        // console.log(data);
         this.selectedMember = data;
       },
       error => {
