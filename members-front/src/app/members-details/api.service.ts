@@ -16,4 +16,9 @@ export class ApiService {
     {headers: this.httpHeaders});
   };
 
+  updateMember(member: any): Observable<any> {
+    const body = { name: member.name, email: member.email, phone: member.phone, address: member.address, city: member.city, profile: member.profile_image, zipcode: member.zipcode, state: member.state, created: member.created, updated: member.updated};
+    return this.http.put(this.baseUrl + '/members/' + member.id + '/', body,
+    {headers: this.httpHeaders});
+  };
 }

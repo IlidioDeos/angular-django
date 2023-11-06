@@ -8,7 +8,7 @@ class Member(models.Model):
     city = models.CharField(max_length=100)
     state = models.CharField(max_length=2)
     zipcode = models.CharField(max_length=5)
-    profile_image = models.ImageField(upload_to='profile_images', blank=True)
+    profile_image = models.ImageField(upload_to='profile_images', blank=True, null=True)
 
 # Create your models here. Como aparece no admin
     def __str__(self):

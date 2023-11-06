@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
-import { ApiService } from '../api.service';
+import { ApiService } from './api.service';
+
 
 @Component({
   selector: 'app-members-details',
@@ -10,7 +11,7 @@ import { ApiService } from '../api.service';
 export class MembersDetailsComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private api: ApiService) { }
-  selectedMember = { id: '', name: '', email: '', phone: '', created: '' };
+  selectedMember = { id: '', name: '', email: '', phone: '', address: '', city: '', state: '', zipcode: '', created: '', updated: '', profile_image: '' };
   selectedId: any;
 
   ngOnInit() {
@@ -32,4 +33,13 @@ export class MembersDetailsComponent implements OnInit {
       });
   };
 
+  updateMember() {
+    this.api.updateMember(this.selectedMember).subscribe(
+      data => {
+        this.selectedMember = data;
+      },
+      error => {
+        console.log("Error", error);
+      });
+  };
 }
