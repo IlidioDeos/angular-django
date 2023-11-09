@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 export class AppComponent {
   title = 'members-front';
 
-  members = [{id: 'Member ID' ,name: 'Member 1', email:'Member Email'}];
+  members = [{id: 'Member ID' ,name: 'Member 1', phone:'', email:'Member Email', profile_image:''}];
 
 
   constructor(private api:ApiService, private router: Router) {

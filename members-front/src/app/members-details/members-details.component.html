@@ -1,19 +1,21 @@
 <h1>Member Details</h1>
 
-{{ selectedMember.name }} - {{ selectedMember.email }}
+<span>Editing Member:</span> {{ selectedMember.name }} - {{ selectedMember.email }} 
+
+<span class="image left">
+    <img src="{{ selectedMember.profile_image }}" alt="">
+</span>
 
 
-<p>Selected ID = {{ selectedId }}</p>
+<input type="text" [(ngModel)]="selectedMember.id" readonly><br>
+<input type="text" [(ngModel)]="selectedMember.name"><br>
+<input type="text" [(ngModel)]="selectedMember.email"><br>
+<input type="text" [(ngModel)]="selectedMember.phone"><br>
+<input type="text" [(ngModel)]="selectedMember.address"><br>
+<input type="text" [(ngModel)]="selectedMember.city"><br>
+<input type="text" [(ngModel)]="selectedMember.state"><br>
+<input type="text" [(ngModel)]="selectedMember.zipcode"><br>
+<button (click)="updateMember()" class="button">Update</button>
+<button (click)="deleteMember()" class="button">Delete</button>
 
-<input type="text" [(ngModel)]="selectedMember.id" readonly>
-<input type="text" [(ngModel)]="selectedMember.name">
-<input type="text" [(ngModel)]="selectedMember.email">
-<input type="text" [(ngModel)]="selectedMember.phone">
-<input type="text" [(ngModel)]="selectedMember.address">
-<input type="text" [(ngModel)]="selectedMember.city">
-<input type="text" [(ngModel)]="selectedMember.state">
-<input type="text" [(ngModel)]="selectedMember.zipcode">
-<button (click)="updateMember()">Update</button>
-<button (click)="deleteMember()">Delete</button>
-
-<button (click)="newMember()">Create</button>
+<button (click)="newMember()" class="button primary">Create</button>
