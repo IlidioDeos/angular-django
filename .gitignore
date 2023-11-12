@@ -3,3 +3,4 @@ db.sqlite3
 profile_images
 __pycache__
 template
+.env
